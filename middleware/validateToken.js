@@ -22,7 +22,7 @@ function validateToken(req, res, next) {
         return;
     }
 
-    if(paramToken ==   `Bearer ${TOKEN}`) {
+    if(paramToken == TOKEN) {
         next();
         return;
     }
