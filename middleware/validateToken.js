@@ -7,7 +7,7 @@ function validateToken(req, res, next) {
     let headerToken = req.headers['book-api-key'];
     let paramToken = req.query.apiKey;
 
-    if(!bearerToken || !headerToken || !paramToken) {
+    if(!bearerToken && !headerToken && !paramToken) {
         res.statusMessage = "You need to send the 'authorization' token";
         return res.status(401).end();
     }
