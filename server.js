@@ -165,6 +165,7 @@ app.delete('/bookmark/:id', (req, res) => {
     console.log("Deleting a bookmark...");
 
     let id = req.params.id;
+    console.log(id);
 
     if(!id) {
         res.statusMessage = "The 'id' parameter is required!";
@@ -226,7 +227,8 @@ app.patch('/bookmark/:id', jsonParser, (req, res) => {
         return res.status(409).end();
     }
 
-    let result = bookmarkList.find((bookmark) => {
+    //Local implementation
+    /*let result = bookmarkList.find((bookmark) => {
         if(bookmark.id == paramsID) {
             return bookmark;
         }
@@ -256,7 +258,38 @@ app.patch('/bookmark/:id', jsonParser, (req, res) => {
         
         res.statusMessage = "The bookmark was updated successfully";
         return res.status(202).json(result);
+    }*/
+
+    //Database implementation
+    let updatedBookmark = {};
+
+    if(title) {
+        updatedBookmark.title = title;
     }
+    if(description) {
+        updatedBookmark.description = description;
+    }
+    if(url) {
+        updatedBookmark.url = url;
+    }
+    if(rating) {
+        updatedBookmark.rating = rating;
+    }
+
+    Bookmarks
+        .updateBookmark(paramsID, updatedBookmark)
+        .then(result => {
+            if(result.errmsg) {
+                res.statusMessage = "The 'id' was not found in the bookmark list";
+                return res.status(409).end();
+            }
+            res.statusMessage = "The bookmark was updated successfully";
+            return res.status(202).json(result);
+        })
+        .catch(err => {
+            res.statusMessage = "Something is wrong with the database, try again later";
+            return res.status(500).end();
+        });
 });
 
 app.listen(8000, () => {
@@ -268,7 +301,7 @@ app.listen(8000, () => {
             useUnifiedTopology: true,
             useCreateIndex: true
         };
-        mongoose.connect('mongodb+srv://A01193126:A01193126!@cluster0-uula5.mongodb.net/test?retryWrites=true&w=majority', settings, (err) => {
+        mongoose.connect('mongodb+srv://A01193126:A01193126!@cluster0-uula5.mongodb.net/bookmarksDB?retryWrites=true&w=majority', settings, (err) => {
             if(err) {
                 return reject(err);
             }
