@@ -59,7 +59,7 @@ const Bookmarks = {
     },
     deleteBookmark: function(ID) {
         return bookmarksCollection
-            .findOneAndDelete({_id: ID})
+            .findOneAndDelete({id: ID})
             .then(deletedBookmark => {
                 return deletedBookmark;
             })
@@ -69,7 +69,7 @@ const Bookmarks = {
     },
     updateBookmark: function(ID, update) {
         return bookmarksCollection
-            .findOneAndUpdate({_id: ID}, {$set: update})
+            .findOneAndUpdate({id: ID}, {$set: update})
             .then(updatedBookmark => {
                 return updatedBookmark;
             })

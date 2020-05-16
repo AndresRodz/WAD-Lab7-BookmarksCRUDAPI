@@ -4,11 +4,14 @@ const morgan = require('morgan');
 const uuid = require("uuid");
 const mongoose = require('mongoose');
 const validateToken = require('./middleware/validateToken');
+const cors = require('./middleware/cors');
 const {Bookmarks} = require('./models/bookmarkModel');
 
 const app = express();
 const jsonParser = bodyParser.json();
 
+app.use(cors);
+app.use(express.static("public"));
 app.use(morgan('dev'));
 app.use(validateToken);
 
@@ -292,7 +295,7 @@ app.patch('/bookmark/:id', jsonParser, (req, res) => {
         });
 });
 
-app.listen(8000, () => {
+app.listen(8080, () => {
     console.log("The server is running on port 8000");
 
     new Promise((resolve, reject) => {

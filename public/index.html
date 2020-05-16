@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Students App</title>
+        <link href="./css/index.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h2>These are the bookmarks:</h2>
+        <div class="results">
+
+        </div>
+
+        <form class="postForm">
+            <h2>Post a new bookmark:</h2>
+
+            <label for="postTitle">
+              Title:
+            </label>
+            <input type="text" id="postTitle"/>
+
+            <label for="postDescription">
+              Description:
+            </label>
+            <input type="text" id="postDescription"/>
+
+            <label for="postUrl">
+              Url:
+            </label>
+            <input type="text" id="postUrl"/>
+
+            <label for="postRating">
+              Rating:
+            </label>
+            <input type="number" id="postRating"/>
+
+            <button type="submit">
+              Post
+            </button>
+        </form>
+
+        <form class="deleteForm">
+            <h2>Delete a bookmark:</h2>
+
+            <label for="deleteId">
+              Id:
+            </label>
+            <input type="text" id="deleteId"/>
+
+            <button type="submit">
+              Delete
+            </button>
+        </form>
+
+        <form class="patchForm">
+            <h2>Patch a bookmark:</h2>
+
+            <label for="patchId">
+                Id:
+            </label>
+            <input type="text" id="patchId"/>
+
+            <label for="patchTitle">
+              Title:
+            </label>
+            <input type="text" id="patchTitle"/>
+
+            <label for="patchDescription">
+              Description:
+            </label>
+            <input type="text" id="patchDescription"/>
+
+            <label for="patchUrl">
+              Url:
+            </label>
+            <input type="text" id="patchUrl"/>
+
+            <label for="patchRating">
+              Rating:
+            </label>
+            <input type="number" id="patchRating"/>
+
+            <button type="submit">
+              Patch
+            </button>
+        </form>
+
+        <form class="getForm">
+            <h2>Get a bookmark by title:</h2>
+
+            <label for="getTitle">
+              Title:
+            </label>
+            <input type="text" id="getTitle"/>
+
+            <button type="submit">
+              Get
+            </button>
+        </form>
+
+        <script src="./js/index.js"></script>
+    </body>
+</html>
