@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const validateToken = require('./middleware/validateToken');
 const cors = require('./middleware/cors');
 const {Bookmarks} = require('./models/bookmarkModel');
+const {DATABASE_URL, PORT} = require('./config');
 
 const app = express();
 const jsonParser = bodyParser.json();
@@ -295,7 +296,7 @@ app.patch('/bookmark/:id', jsonParser, (req, res) => {
         });
 });
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
     console.log("The server is running on port 8000");
 
     new Promise((resolve, reject) => {
@@ -304,7 +305,7 @@ app.listen(8080, () => {
             useUnifiedTopology: true,
             useCreateIndex: true
         };
-        mongoose.connect('mongodb+srv://A01193126:A01193126!@cluster0-uula5.mongodb.net/bookmarksDB?retryWrites=true&w=majority', settings, (err) => {
+        mongoose.connect(DATABASE_URL, settings, (err) => {
             if(err) {
                 return reject(err);
             }

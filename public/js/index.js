@@ -1,8 +1,8 @@
 const TOKEN = "2abbf7c3-245b-404f-9473-ade729ed4653";
 
 function fetchBookmarks() {
-    //let url = '/bookmarks';
-    let url = 'http://localhost:8000/bookmarks';
+    let url = '/bookmarks';
+    //let url = 'http://localhost:8000/bookmarks';
 
     let settings = {
         method: 'GET',
@@ -42,8 +42,8 @@ function fetchBookmarks() {
 }
 
 function postBookmark(title, description, bookmarkUrl, rating) {
-    //let url = "/bookmarks";
-    let url = 'http://localhost:8000/bookmarks';
+    let url = "/bookmarks";
+    //let url = 'http://localhost:8000/bookmarks';
 
     let bookmark = {
         title: title,
@@ -94,8 +94,8 @@ function watchPostForm() {
 }
 
 function deleteBookmark(id) {
-    //let url = `/bookmark/${id}`;
-    let url = `http://localhost:8000/bookmark/${id}`;
+    let url = `/bookmark/${id}`;
+    //let url = `http://localhost:8000/bookmark/${id}`;
 
     let settings = {
         method: "DELETE",
@@ -135,8 +135,8 @@ function watchDeleteForm() {
 }
 
 function patchBookmark(id, title, description, bookmarkUrl, rating) {
-    //let url = "/bookmarks";
-    let url = `http://localhost:8000/bookmark/${id}`;
+    let url = `/bookmark/${id}`;
+    //let url = `http://localhost:8000/bookmark/${id}`;
 
     let bookmark = {
         id: id,
@@ -189,8 +189,8 @@ function watchPatchForm() {
 }
 
 function getBookmark(title) {
-    //let url = '/bookmarks';
-    let url = `http://localhost:8000/bookmark?title=${title}`;
+    let url = `/bookmark?title=${title}`;
+    //let url = `http://localhost:8000/bookmark?title=${title}`;
 
     let settings = {
         method: 'GET',
